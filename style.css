@@ -12,6 +12,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center; /* Add this to center children */
+    width: 100%;         /* Add this to ensure full width */
+    max-width: 1200px;   /* Add this to control maximum width */
+    margin: 0 auto;      /* Add this to center the container */
+    padding: 2rem;       /* Add this for some breathing room */
 }
 
 .letter-container {
@@ -130,6 +135,10 @@ body {
     cursor: pointer;
     overflow: hidden;
     margin-bottom: 30px; /* Added to prevent overlap when opened */
+    /* Remove any margin-left/right if present */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
 }
 
 .front {
@@ -251,4 +260,66 @@ body {
     margin: 5px 0 0;
     font-size: 0.9rem;
     opacity: 0.8;
+}
+
+.memories-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.memories-section h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #ff4081;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Changed to exactly 4 columns */
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+/* Add media query for responsive design */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
 }
