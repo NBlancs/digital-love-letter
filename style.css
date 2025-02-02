@@ -1,0 +1,254 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fce4ec;
+    font-family: 'Times New Roman', serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.letter-container {
+    padding: 2rem;
+    background: #fff9f9;
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto; /* Added to handle overflow content */
+}
+
+.envelope:not(.open) .letter-container {
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.envelope.open .letter-container {
+    transform: scale(1);
+    opacity: 1;
+    transition-delay: 0.5s;
+}
+
+.letter {
+    max-width: 90%; /* Added to constrain width */
+    margin: 0 auto; /* Center the letter */
+    border: 1px solid #dec3c3;
+    padding: 2rem;
+    background: #fff9f9;
+    font-size: 1.1rem; /* Slightly reduced for better fit */
+}
+
+.letter h1 {
+    color: #8b4513;
+    text-align: center;
+    font-style: italic;
+    font-size: 2.2rem;  /* Slightly reduced */
+    margin-bottom: 1.5rem; /* Reduced margin */
+}
+
+.letter-content {
+    line-height: 1.5;
+    color: #5d4037;
+    margin-bottom: 1.5rem;
+}
+
+.signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 2rem;
+}
+
+.music-player {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 300px;
+    margin: 0 auto;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.8rem;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.2);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    background: white;
+    height: 100%;
+    width: 0%;
+}
+
+.click-heart {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.click-heart h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #ff4081;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.envelope {
+    position: relative;
+    width: 600px;  /* increased from 500px */
+    height: 450px; /* increased from 350px */
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 30px; /* Added to prevent overlap when opened */
+}
+
+.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 2px solid #ffcdd2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+    transform-origin: top;
+}
+
+.flap {
+    position: absolute;
+    background: #fff;
+    border: 2px solid #ffcdd2;
+    transition: transform 0.5s ease-in-out;
+}
+
+.top-flap {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    z-index: 3;
+    transition: transform 0.4s ease-in-out;
+}
+
+.right-flap {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform-origin: right;
+    z-index: 2;
+    transition: transform 0.4s ease-in-out;
+}
+
+.heart-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;  /* increased from 3rem */
+    color: #ff4081;
+    z-index: 4;
+    transition: opacity 0.3s;
+}
+
+.letter-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.envelope.open .front {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .top-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .right-flap {
+    transform: rotateY(-180deg);
+    transition-delay: 0.25s;
+}
+
+.envelope.open .heart-seal {
+    opacity: 0;
+}
+
+.envelope:not(.open) .top-flap {
+    transform: rotateX(0);
+}
+
+.envelope:not(.open) .right-flap {
+    transform: rotateY(0);
+}
+
+.music-card {
+    background: linear-gradient(45deg, #ff4081, #f50057);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    color: white;
+    width: 300px;
+    margin: 2rem auto;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.album-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.song-details h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.song-details p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}

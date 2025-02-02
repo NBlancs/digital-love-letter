@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="click-heart">
+            <h2>Click The Heart To Open</h2>
+        </div>
+        
+        <div class="envelope">
+            <div class="flap top-flap"></div>
+            <div class="flap right-flap"></div>
+            <div class="heart-seal">❤</div>
+            <div class="letter-wrapper">
+                <div class="letter-container">
+                    <div class="letter">
+                        <h1>My dearest, Angelica</h1>
+                        <div class="letter-content">
+                            <p style="text-align: justify;">From the moment I met you, my life has been filled with joy and happiness. Your smile lights up my world, and your presence brings me peace. I cherish every moment we spend together and look forward to creating many more beautiful memories with you.</p>
+                            <p class="signature">With love,<br>Alexander</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="music-card">
+            <div class="song-info">
+                <img src="/assets/album cover.jpg" alt="Album Cover" class="album-cover">
+                <div class="song-details">
+                    <h3>Wish You Were Sober</h3>
+                    <p>Conan Gray</p>
+                </div>
+            </div>
+            <audio id="audio" src="/assets/wish-you-were-sober-lyrics.mp3"></audio>
+            <div class="controls">
+                <button id="prevBtn" class="control-btn">⏮</button>
+                <button id="playBtn" class="control-btn">▶</button>
+                <button id="nextBtn" class="control-btn">⏭</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
