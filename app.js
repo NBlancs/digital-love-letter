@@ -8,9 +8,25 @@ const progress = document.querySelector('.progress');
 const envelope = document.querySelector('.envelope');
 const front = document.querySelector('.front');
 
+const modalOverlay = document.querySelector('.modal-overlay');
+const closeModal = document.querySelector('.close-modal');
+
 envelope.addEventListener('click', () => {
-    envelope.classList.toggle('open');
-    envelope.style.cursor = envelope.classList.contains('open') ? 'default' : 'pointer';
+    envelope.classList.add('open');
+    modalOverlay.classList.add('active');
+});
+
+closeModal.addEventListener('click', () => {
+    modalOverlay.classList.remove('active');
+    setTimeout(() => {
+        envelope.classList.remove('open');
+    }, 300);
+});
+
+modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+        closeModal.click();
+    }
 });
 
 // Play/Pause functionality

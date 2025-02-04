@@ -19,28 +19,7 @@ body {
     padding: 2rem;       /* Add this for some breathing room */
 }
 
-.letter-container {
-    padding: 2rem;
-    background: #fff9f9;
-    transform: translateX(0);
-    opacity: 1;
-    transition: all 0.5s ease-in-out;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    overflow-y: auto; /* Added to handle overflow content */
-}
-
-.envelope:not(.open) .letter-container {
-    transform: scale(0.8);
-    opacity: 0;
-}
-
-.envelope.open .letter-container {
-    transform: scale(1);
-    opacity: 1;
-    transition-delay: 0.5s;
-}
+/* Remove letter-container and letter-wrapper styles as they're no longer needed */
 
 .letter {
     max-width: 90%; /* Added to constrain width */
@@ -137,11 +116,16 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
     cursor: pointer;
     overflow: hidden;
-    margin-bottom: 0.1rem; /* Added to prevent overlap when opened */
+    margin-bottom: 30px;
     /* Remove any margin-left/right if present */
     margin-left: auto;
     margin-right: auto;
     border-radius: 30px;
+    transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.02);
 }
 
 .front {
@@ -193,16 +177,6 @@ body {
     color: #ff4081;
     z-index: 4;
     transition: opacity 0.3s;
-}
-
-.letter-wrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
 }
 
 .envelope.open .front {
@@ -374,6 +348,11 @@ body {
         gap: 0.75rem;
         padding: 0.5rem;
     }
+
+    .modal-letter {
+        padding: 2rem;
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -424,4 +403,203 @@ body {
     margin-top: 8px;
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-letter {
+    background: #fff9f9;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    width: 600px;
+    position: relative;
+    border: 2px solid #ffcdd2;
+    animation: modalAppear 0.5s ease;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-letter .letter {
+    border: 1px solid #dec3c3;
+    padding: 2rem;
+    margin: 0;
+    max-width: 100%;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ff4081;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* Update mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .click-heart h2 {
+        font-size: 2.5rem;
+    }
+
+    .envelope {
+        width: 85vw;
+        height: calc(85vw * 0.75);
+        margin-bottom: 1.5rem;
+    }
+
+    .heart-seal {
+        font-size: 3.5rem;
+    }
+
+    .modal-letter {
+        width: 90%;
+        padding: 1.5rem;
+        max-height: 85vh;
+    }
+
+    .modal-letter .letter {
+        padding: 1rem;
+    }
+
+    .modal-letter .letter h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .modal-letter .letter-content {
+        font-size: 1rem;
+    }
+
+    .music-card {
+        width: 85vw;
+        max-width: 350px;
+        padding: 1rem;
+    }
+
+    .control-btn {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .memories-section {
+        padding: 0;
+        margin-top: 2rem;
+    }
+
+    .memories-section h2 {
+        font-size: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .click-heart h2 {
+        font-size: 2rem;
+    }
+
+    .envelope {
+        width: 90vw;
+        height: calc(90vw * 0.8);
+    }
+
+    .heart-seal {
+        font-size: 3rem;
+    }
+
+    .modal-letter {
+        padding: 1rem;
+    }
+
+    .modal-letter .letter h1 {
+        font-size: 1.5rem;
+    }
+
+    .music-card {
+        padding: 1rem;
+    }
+
+    .song-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .album-cover {
+        width: 50px;
+        height: 50px;
+    }
+
+    .controls {
+        gap: 0.75rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .close-modal {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Add orientation-specific styles */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .modal-letter {
+        max-height: 90vh;
+        width: 85%;
+        padding: 1rem;
+    }
+
+    .envelope {
+        height: 40vh;
+        width: calc(40vh * 1.33);
+    }
 }
